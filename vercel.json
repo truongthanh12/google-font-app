@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/meta/metadata/fonts",
+      "destination": "https://fonts.google.com/meta/metadata/fonts"
+    },
+    {
+      "source": "/tester/sampletext",
+      "destination": "https://fonts.google.com"
+    }
+  ]
+}
