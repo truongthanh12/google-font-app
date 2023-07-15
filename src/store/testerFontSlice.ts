@@ -7,7 +7,7 @@ export const getTesterDesc = createAsyncThunk(
   "testerFonts/GET_TESTER_DESCRIPTION",
   async ({ family }: any) => {
     const response = await useGetTesterFont({ family });
-    return response || "";
+    return response;
   }
 );
 
@@ -15,7 +15,7 @@ export const getTesterDescParagraph = createAsyncThunk(
   "testerFonts/GET_TESTER_DESCRIPTION_PARAGRAPH",
   async ({ family }: any) => {
     const response = await useGetTesterFontParagraph({ family });
-    return response || "";
+    return response;
   }
 );
 

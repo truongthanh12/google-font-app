@@ -1,6 +1,4 @@
-import { getMetaFonts } from "@/store/fontMetaSlice";
-import React, { useCallback, useEffect, useRef, useState } from "react";
-import { useDispatch } from "react-redux";
+import React, { useCallback, useEffect, useRef } from "react";
 import FontItem from "./FontItem";
 import debounce from "lodash/debounce";
 import isEmpty from "lodash/isEmpty";
@@ -8,7 +6,7 @@ import Empty from "../empty";
 import classNames from "classnames";
 
 interface TypeProps {
-  data: any;
+  data?: any;
   loading: boolean;
   error: any;
   onClearSearch: () => void;
@@ -17,10 +15,11 @@ interface TypeProps {
   previewType: string;
   dataSlice: any;
   setDataSlice: any;
+  dataFonts?: any;
 }
 
 const Fonts: React.FC<TypeProps> = ({
-  data,
+  dataFonts,
   loading,
   error,
   onClearSearch,
@@ -30,8 +29,6 @@ const Fonts: React.FC<TypeProps> = ({
   dataSlice,
   setDataSlice,
 }) => {
-  const dispatch = useDispatch();
-
   const elementRef = useRef<HTMLInputElement>(null);
   const offset = useRef<number>(15);
 
@@ -48,22 +45,22 @@ const Fonts: React.FC<TypeProps> = ({
   //handle scroll
   const handleScroll = useCallback(
     debounce(() => {
-      if (dataSlice?.length < data?.length) {
+      if (dataSlice?.length < dataFonts?.length) {
         if (isBottom(elementRef?.current)) {
           offset.current += 15; // Increment offset by 15
-          setDataSlice(data?.slice(0, offset.current));
+          setDataSlice(dataFonts?.slice(0, offset.current));
         }
         return;
       }
     }, 400),
-    [dataSlice?.length, data?.length]
+    [dataSlice?.length, dataFonts?.length]
   );
 
   useEffect(() => {
-    if (data) {
-      setDataSlice(data?.slice(0, offset?.current));
+    if (dataFonts) {
+      setDataSlice(dataFonts?.slice(0, offset?.current));
     }
-  }, [data, offset?.current]);
+  }, [dataFonts, offset?.current]);
 
   useEffect(() => {
     try {
@@ -76,11 +73,7 @@ const Fonts: React.FC<TypeProps> = ({
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [dataSlice?.length, data?.length]);
-
-  useEffect(() => {
-    dispatch(getMetaFonts() as any);
-  }, [dispatch]);
+  }, [dataSlice?.length, dataFonts?.length]);
 
   if (loading) {
     return <div>Loading...</div>;
@@ -93,7 +86,7 @@ const Fonts: React.FC<TypeProps> = ({
   return (
     <>
       <div className="text-xs flex py-8">
-        {dataSlice?.length} of {data?.length} items
+        {dataSlice?.length} of {dataFonts?.length} items
       </div>
       <div
         className={classNames(

@@ -1,6 +1,5 @@
 import { TesterDescription } from "@/models/common";
 import { getTesterDesc, getTesterDescParagraph } from "@/store/testerFontSlice";
-import { Transition } from "@headlessui/react";
 import axios from "axios";
 import { isEmpty } from "lodash";
 import React, { useEffect, useMemo } from "react";
@@ -97,13 +96,6 @@ const FontItem: React.FC<Item> = ({ item, size, previewType, previewText }) => {
             return <span key={item}>{item + (isLastItem ? "" : ", ")}</span>;
           })}
         </p>
-        <Transition
-          className="mx-auto my-16 max-w-md space-y-4"
-          show={!!testerDesc?.data}
-          enter="transition-all ease-in-out duration-500 delay-[200ms]"
-          enterFrom="opacity-0 translate-y-6"
-          enterTo="opacity-100 translate-y-0"
-        >
           <div
             style={{ fontFamily: family, fontSize: fontSize + "px" }}
             className="font-normal text-gray-700 text-4xl dark:text-white break-all leading-tight"
@@ -112,7 +104,6 @@ const FontItem: React.FC<Item> = ({ item, size, previewType, previewText }) => {
                 previewText || testerDesc?.data?.replace(/[^a-zA-Z0-9 ]/g, ""),
             }}
           />
-        </Transition>
       </div>
     </Link>
   );

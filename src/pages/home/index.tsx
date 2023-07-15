@@ -14,9 +14,9 @@ const Home: React.FC<any> = ({
   filteredData,
   loading,
   error,
+  dataSlice,
+  setDataSlice,
 }) => {
-  const [dataSlice, setDataSlice] = useState<any>([]);
-
   const [selectedPreview, setSelectedPreview] = useState<RangeFontProps>(
     DATA_PREVIEW[1] || { name: "Sentence" }
   );
@@ -83,13 +83,15 @@ const Home: React.FC<any> = ({
       />
       <Fonts
         onClearSearch={handleClearSearch}
-        data={filteredData}
+        data={data}
         loading={loading}
         error={error}
         previewText={queryPreview}
         size={rangeValue}
         previewType={selectedPreview?.name}
-        dataSlice={dataSlice} setDataSlice={setDataSlice}
+        dataSlice={dataSlice}
+        setDataSlice={setDataSlice}
+        dataFonts={filteredData}
       />
     </div>
   );
