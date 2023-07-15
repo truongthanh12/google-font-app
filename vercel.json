@@ -2,11 +2,11 @@
   "rewrites": [
     {
       "source": "/meta/metadata/fonts",
-      "destination": "https://fonts.google.com/meta/metadata/fonts"
+      "destination": "https://fonts.google.com/metadata/fonts"
     },
     {
       "source": "/tester/sampletext",
-      "destination": "https://fonts.google.com/tester/sampletext"
+      "destination": "https://fonts.google.com/sampletext"
     }
   ]
 }
