@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { BsReverseLayoutSidebarInsetReverse } from "react-icons/Bs";
+import { BiSidebar } from "react-icons/bi";
 import { useDispatch, useSelector } from "react-redux";
 import isEmpty from "lodash/isEmpty";
 import { togglePopup } from "@/store/cartSlice";
@@ -10,7 +10,7 @@ const Nav = () => {
     (state: { cart: any; titles: string[] }) => state.cart.titles
   );
   const dispatch = useDispatch()
-  
+
   const handleTogglePopup = () => {
     dispatch(togglePopup());
   };
@@ -22,7 +22,7 @@ const Nav = () => {
         {!isEmpty(carts) && (
           <span className="absolute -top-[5px] -right-[5px] rounded-full w-2 h-2 bg-orange-500"></span>
         )}
-        <BsReverseLayoutSidebarInsetReverse className="text-3xl" />
+        <BiSidebar className="text-3xl" />
       </button>
     </div>
   );
