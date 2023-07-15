@@ -2,11 +2,11 @@
   "rewrites": [
     {
       "source": "/meta/metadata/fonts",
-      "destination": "https://google-font-app-fawn.vercel.app/meta/metadata/fonts"
+      "destination": "https://fonts.google.com/meta/metadata/fonts"
     },
     {
       "source": "/tester/sampletext",
-      "destination": "https://google-font-app-fawn.vercel.app/tester/sampletext"
+      "destination": "https://fonts.google.com/tester/sampletext"
     }
   ]
 }
